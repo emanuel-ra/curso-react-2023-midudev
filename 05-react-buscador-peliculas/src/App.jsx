@@ -46,8 +46,8 @@ function App () {
     debounce(search => {
       console.log(search)
       getMovies({ search })
-    }, 500)
-    , []
+    }, 300)
+    , [getMovies]
   )
 
   const handleSubmit = (event) => {
@@ -58,7 +58,7 @@ function App () {
   const handleChange = (event) => {
     const newSearch = event.target.value
     updateSearch(newSearch)
-    getMovies({ search: newSearch })
+    debounceGetMovies(newSearch)
   }
 
   const handleSort = () => { setSort(!sort) }
